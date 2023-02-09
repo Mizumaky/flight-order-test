@@ -17,5 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3 # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
     - name: Build the Docker image
-      working-directory: WebApp
+      # working-directory: WebApp
       run: docker build . --file Dockerfile --tag dotnet-webapp:$(date +%s)
