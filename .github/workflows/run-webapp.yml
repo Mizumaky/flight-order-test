@@ -1,0 +1,21 @@
+name: Run WebApp Docker Container
+
+on:
+  push:
+    branches: none # [ "main" ]
+  pull_request:
+    branches: none # [ "main" ]
+    
+  workflow_dispatch: # allows manual run
+
+jobs:
+
+  build-image:
+
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v3 # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+    - name: Build and run the docker container
+      # working-directory: WebApp
+      run: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
